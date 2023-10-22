@@ -1,4 +1,4 @@
-package br.com.jeff.restescola.professor;
+package br.com.jeff.restescola.domain.professor;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

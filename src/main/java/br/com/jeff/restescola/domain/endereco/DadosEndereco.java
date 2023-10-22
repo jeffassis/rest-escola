@@ -1,4 +1,4 @@
-package br.com.jeff.restescola.endereco;
+package br.com.jeff.restescola.domain.endereco;
 
 import jakarta.validation.constraints.Pattern;
 

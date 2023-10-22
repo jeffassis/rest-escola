@@ -1,7 +1,7 @@
-package br.com.jeff.restescola.professor;
+package br.com.jeff.restescola.domain.professor;
 
 
-import br.com.jeff.restescola.endereco.Endereco;
+import br.com.jeff.restescola.domain.endereco.Endereco;
 
 public record DadosDetalhamentoProfessor(
         Long id,

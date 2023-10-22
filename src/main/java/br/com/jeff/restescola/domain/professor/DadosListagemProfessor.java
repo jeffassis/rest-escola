@@ -1,4 +1,4 @@
-package br.com.jeff.restescola.professor;
+package br.com.jeff.restescola.domain.professor;
 
 public record DadosListagemProfessor(Long id, String nome, String email, String telefone) {
 
