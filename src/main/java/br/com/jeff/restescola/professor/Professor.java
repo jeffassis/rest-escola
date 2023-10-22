@@ -29,10 +29,12 @@ public class Professor {
     private String email;
     private String telefone;
     private String sangue;
+    private Boolean ativo;
     @Embedded
     private Endereco endereco;
 
     public Professor(DadosCadastroProfessor dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.rg = dados.rg();
         this.cpf = dados.cpf();
@@ -40,5 +42,33 @@ public class Professor {
         this.telefone = dados.telefone();
         this.sangue = dados.sangue();
         this.endereco = new Endereco(dados.endereco());
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoProfessor dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.rg() != null) {
+            this.rg = dados.rg();
+        }
+        if (dados.cpf() != null) {
+            this.cpf = dados.cpf();
+        }
+        if (dados.email() != null) {
+            this.email = dados.email();
+        }
+        if (dados.telefone() != null) {
+            this.telefone = dados.telefone();
+        }
+        if (dados.sangue() != null) {
+            this.sangue = dados.sangue();
+        }
+        if (dados.endereco() != null) {
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

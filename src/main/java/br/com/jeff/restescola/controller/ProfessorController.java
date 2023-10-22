@@ -1,9 +1,6 @@
 package br.com.jeff.restescola.controller;
 
-import br.com.jeff.restescola.professor.DadosCadastroProfessor;
-import br.com.jeff.restescola.professor.DadosListagemProfessor;
-import br.com.jeff.restescola.professor.Professor;
-import br.com.jeff.restescola.professor.ProfessorRepository;
+import br.com.jeff.restescola.professor.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +25,20 @@ public class ProfessorController {
 
     @GetMapping
     public Page<DadosListagemProfessor> listar(@PageableDefault(size = 5, sort = {"nome"}) Pageable paginacao) {
-        return repository.findAll(paginacao).map(DadosListagemProfessor::new);
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemProfessor::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoProfessor dados){
+        var professor = repository.getReferenceById(dados.id());
+        professor.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        var professor = repository.getReferenceById(id);
+        professor.excluir();
     }
 }
