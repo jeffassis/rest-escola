@@ -3,7 +3,10 @@ package br.com.jeff.restescola.domain.disciplina;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Table(name = "disciplinas")
 @Entity(name = "Disciplina")
@@ -22,8 +25,13 @@ public class Disciplina {
     @Column(nullable = false, unique = true)
     private String nome;
 
-    public Disciplina(DadosCadastrarDisciplina dados){
+    public Disciplina(DadosCadastrarDisciplina dados) {
         this.nome = dados.nome();
     }
 
+    public void atualizarInformacoes(DadosAtualizarDisciplina dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+    }
 }
