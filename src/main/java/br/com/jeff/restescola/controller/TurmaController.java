@@ -48,4 +48,10 @@ public class TurmaController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/{id}")
+    public  ResponseEntity detalhar(@PathVariable Long id) {
+        var turma = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoTurma(turma));
+    }
+
 }
